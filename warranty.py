@@ -1,7 +1,7 @@
 from db import DB
 class Warranty:
     def __init__(self):
-        self.db = DB()
+        self.db = DB(max_records=5)  # Передаем ограничение в 5 записей
 
     def make_report(self, days=30):
         r = self.db.report(days)
@@ -14,4 +14,4 @@ class Warranty:
 
     def get_all_claims(self):
         data = self.db.load()
-        return data["claims"]
+        return data["claims"][:5]

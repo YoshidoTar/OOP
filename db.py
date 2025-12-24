@@ -4,8 +4,9 @@ from datetime import datetime, timedelta
 
 
 class DB:
-    def __init__(self, f="db.txt"):
+    def __init__(self, f="db.txt", max_records=5):
         self.f = f
+        self.max_records = max_records
         if not os.path.exists(f):
             with open(f, 'w') as file:
                 json.dump({"claims": [], "next_id": 1}, file)
@@ -20,6 +21,11 @@ class DB:
 
     def add(self, product, client, decision, cost):
         data = self.load()
+
+        if len(data["claims"]) >= self.max_records:
+            print(f" Maximum records limit reached ({self.max_records}). Cannot add more claims.")
+            return None
+
         data["claims"].append({
             "id": data["next_id"],
             "product": product,
@@ -37,13 +43,8 @@ class DB:
         start = datetime.now() - timedelta(days=days)
         repair = replace = count = 0
 
-        for c in data["claims"]:
-            d = datetime.strptime(c["date"], "%Y-%m-%d")
-            if d >= start:
-                count += 1
-                if c["decision"] == "repair":
-                    repair += c["cost"]
-                else:
-                    replace += c["cost"]
-
         return {"count": count, "repair": repair, "replace": replace, "total": repair + replace}
+
+    def is_full(self):
+        data = self.load()
+        return len(data["claims"]) >= self.max_records
