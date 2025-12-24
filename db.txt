@@ -1,0 +1,53 @@
+{
+  "claims": [
+    {
+      "id": 1,
+      "product": "CPU",
+      "client": "Ivan",
+      "decision": "repair",
+      "cost": 2000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 2,
+      "product": "GPU",
+      "client": "Petr",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 3,
+      "product": "CPU",
+      "client": "Ivan",
+      "decision": "repair",
+      "cost": 2000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 4,
+      "product": "GPU",
+      "client": "Petr",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 5,
+      "product": "SSD",
+      "client": "Alex",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 6,
+      "product": "CPU",
+      "client": "Max",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
+    }
+  ],
+  "next_id": 7
+}
