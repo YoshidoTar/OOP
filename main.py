@@ -1,115 +1,81 @@
 import json
-from datetime import datetime, timedelta
-import os
-class DB:
-    def __init__(self, f="db.txt"):
-        self.f = f
-        if not os.path.exists(f):
-            with open(f, 'w') as file:
-                json.dump({"claims": [], "next_id": 1}, file)
+from warranty import Warranty
+def save_claims_to_txt(claims, filename="claims_report.txt"):
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write("=== WARRANTY CLAIMS REPORT ===\n\n")
+        f.write(f"Total claims: {len(claims)}\n")
+        f.write("=" * 50 + "\n\n")
 
-    def load(self):
-        with open(self.f, 'r') as file:
-            return json.load(file)
-
-    def save(self, data):
-        with open(self.f, 'w') as file:
-            json.dump(data, file, indent=2)
-
-    def add(self, product, client, decision, cost):
-        data = self.load()
-        data["claims"].append({
-            "id": data["next_id"],
-            "product": product,
-            "client": client,
-            "decision": decision,
-            "cost": cost,
-            "date": datetime.now().strftime("%Y-%m-%d")
-        })
-        data["next_id"] += 1
-        self.save(data)
-        return data["next_id"] - 1
-    def report(self, days):
-        data = self.load()
-        start = datetime.now() - timedelta(days=days)
-        repair = replace = count = 0
-
-        for c in data["claims"]:
-            d = datetime.strptime(c["date"], "%Y-%m-%d")
-            if d >= start:
-                count += 1
-                if c["decision"] == "repair":
-                    repair += c["cost"]
-                else:
-                    replace += c["cost"]
-
-        return {"count": count, "repair": repair, "replace": replace, "total": repair + replace}
+        for claim in claims:
+            f.write(f"Claim ID: #{claim['id']}\n")
+            f.write(f"Product: {claim['product']}\n")
+            f.write(f"Client: {claim['client']}\n")
+            f.write(f"Decision: {claim['decision']}\n")
+            f.write(f"Cost: ${claim['cost']}\n")
+            f.write(f"Date: {claim['date']}\n")
+            f.write("-" * 30 + "\n")
 
 
-class Product:
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
-        self.sold = datetime.now() - timedelta(days=100)
-
-    def is_valid(self):
-        return datetime.now() <= self.sold + timedelta(days=365)
-
-class Receiver:
-    def check(self, product):
-        return product.is_valid()
-
-class Technician:
-    def fix_cost(self, problem):
-        if "not work" in problem.lower():
-            return 2000
-        return 1000
-class Manager:
-    def decide(self, product, cost):
-        return "replace" if cost > product.price * 0.4 else "repair"
-
-class Warranty:
-    def __init__(self):
-        self.db = DB()
-        self.receiver = Receiver()
-        self.tech = Technician()
-        self.manager = Manager()
-        self.products = {
-            1: Product("CPU", 25000),
-            2: Product("GPU", 50000),
-            3: Product("SSD", 7000)
-        }
-    def claim(self, pid, client, problem):
-        if pid not in self.products:
-            return "No product"
-        p = self.products[pid]
-        if not self.receiver.check(p):
-            return "No warranty"
-        cost = self.tech.fix_cost(problem)
-        decision = self.manager.decide(p, cost)
-        cid = self.db.add(p.name, client, decision, cost)
-
-        return f"#{cid}: {decision} (${cost})"
-    def make_report(self, days=30):
-        r = self.db.report(days)
-        text = f"Report ({days} days):\nClaims: {r['count']}\nRepair: ${r['repair']}\nReplace: ${r['replace']}\nTotal: ${r['total']}"
-
-        with open("report.txt", "w") as f:
-            f.write(text)
-
-        return text
 def main():
     w = Warranty()
 
-    cases = [
-        (1, "Ivan", "Not working"),
-        (2, "Petr", "Overheat"),
-        (3, "Alex", "Slow"),
-        (1, "Max", "Broken")
-    ]
-    for pid, client, problem in cases:
-        print(f"{client}: {w.claim(pid, client, problem)}")
+    try:
+        with open("db.txt", "r", encoding="utf-8") as f:
+            data = json.load(f)
+            claims = data["claims"]
 
-    print("\n" + w.make_report())
+            print("=== Warranty Claims Analysis ===")
+            print(f"Total claims in database: {len(claims)}\n")
+
+            repair_count = sum(1 for c in claims if c["decision"] == "repair")
+            replace_count = sum(1 for c in claims if c["decision"] == "replace")
+            total_cost = sum(c["cost"] for c in claims)
+
+            print(f"Repair claims: {repair_count}")
+            print(f"Replace claims: {replace_count}")
+            print(f"Total cost: ${total_cost}\n")
+
+            print("=== Claims by Product ===")
+            products = {}
+            for claim in claims:
+                product = claim["product"]
+                if product not in products:
+                    products[product] = {"count": 0, "total_cost": 0}
+                products[product]["count"] += 1
+                products[product]["total_cost"] += claim["cost"]
+
+            for product, stats in products.items():
+                print(f"{product}: {stats['count']} claims, total cost: ${stats['total_cost']}")
+
+            print("\n=== Claims by Client ===")
+            clients = {}
+            for claim in claims:
+                client = claim["client"]
+                if client not in clients:
+                    clients[client] = {"count": 0, "total_cost": 0}
+                clients[client]["count"] += 1
+                clients[client]["total_cost"] += claim["cost"]
+
+            for client, stats in clients.items():
+                print(f"{client}: {stats['count']} claims, total cost: ${stats['total_cost']}")
+
+            save_claims_to_txt(claims)
+            print(f"\nReport saved to 'claims_report.txt'")
+
+            print("\n=== Sample from claims_report.txt ===")
+            with open("claims_report.txt", "r", encoding="utf-8") as report_file:
+                lines = report_file.readlines()[:15]
+                print("".join(lines))
+                print("... (full report in claims_report.txt)")
+
+    except FileNotFoundError:
+        print("Error: db.txt file not found")
+        print("Please ensure db.txt exists with the warranty claims data")
+    except json.JSONDecodeError:
+        print("Error: Invalid JSON format in db.txt")
+    except Exception as e:
+        print(f"Error: {e}")
+
+
 if __name__ == "__main__":
     main()

@@ -1,0 +1,159 @@
+=== WARRANTY CLAIMS REPORT ===
+
+Total claims: 22
+==================================================
+
+Claim ID: #1
+Product: CPU
+Client: Ivan
+Decision: repair
+Cost: $2000
+Date: 2025-12-24
+------------------------------
+Claim ID: #2
+Product: GPU
+Client: Petr
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------
+Claim ID: #3
+Product: CPU
+Client: Ivan
+Decision: repair
+Cost: $2000
+Date: 2025-12-24
+------------------------------
+Claim ID: #4
+Product: GPU
+Client: Petr
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------
+Claim ID: #5
+Product: SSD
+Client: Alex
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------
+Claim ID: #6
+Product: CPU
+Client: Max
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------
+Claim ID: #7
+Product: CPU
+Client: Ivan
+Decision: repair
+Cost: $2000
+Date: 2025-12-24
+------------------------------
+Claim ID: #8
+Product: GPU
+Client: Petr
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------
+Claim ID: #9
+Product: SSD
+Client: Alex
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------
+Claim ID: #10
+Product: CPU
+Client: Max
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------
+Claim ID: #11
+Product: CPU
+Client: Ivan
+Decision: repair
+Cost: $2000
+Date: 2025-12-24
+------------------------------
+Claim ID: #12
+Product: GPU
+Client: Petr
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------
+Claim ID: #13
+Product: SSD
+Client: Alex
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------
+Claim ID: #14
+Product: CPU
+Client: Max
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------
+Claim ID: #15
+Product: CPU
+Client: Ivan
+Decision: repair
+Cost: $2000
+Date: 2025-12-24
+------------------------------
+Claim ID: #16
+Product: GPU
+Client: Petr
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------
+Claim ID: #17
+Product: SSD
+Client: Alex
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------
+Claim ID: #18
+Product: CPU
+Client: Max
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------
+Claim ID: #19
+Product: CPU
+Client: Ivan
+Decision: repair
+Cost: $2000
+Date: 2025-12-24
+------------------------------
+Claim ID: #20
+Product: GPU
+Client: Petr
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------
+Claim ID: #21
+Product: SSD
+Client: Alex
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------
+Claim ID: #22
+Product: CPU
+Client: Max
+Decision: repair
+Cost: $1000
+Date: 2025-12-24
+------------------------------

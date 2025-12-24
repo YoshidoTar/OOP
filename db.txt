@@ -47,7 +47,135 @@
       "decision": "repair",
       "cost": 1000,
       "date": "2025-12-24"
+    },
+    {
+      "id": 7,
+      "product": "CPU",
+      "client": "Ivan",
+      "decision": "repair",
+      "cost": 2000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 8,
+      "product": "GPU",
+      "client": "Petr",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 9,
+      "product": "SSD",
+      "client": "Alex",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 10,
+      "product": "CPU",
+      "client": "Max",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 11,
+      "product": "CPU",
+      "client": "Ivan",
+      "decision": "repair",
+      "cost": 2000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 12,
+      "product": "GPU",
+      "client": "Petr",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 13,
+      "product": "SSD",
+      "client": "Alex",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 14,
+      "product": "CPU",
+      "client": "Max",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 15,
+      "product": "CPU",
+      "client": "Ivan",
+      "decision": "repair",
+      "cost": 2000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 16,
+      "product": "GPU",
+      "client": "Petr",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 17,
+      "product": "SSD",
+      "client": "Alex",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 18,
+      "product": "CPU",
+      "client": "Max",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 19,
+      "product": "CPU",
+      "client": "Ivan",
+      "decision": "repair",
+      "cost": 2000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 20,
+      "product": "GPU",
+      "client": "Petr",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 21,
+      "product": "SSD",
+      "client": "Alex",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
+    },
+    {
+      "id": 22,
+      "product": "CPU",
+      "client": "Max",
+      "decision": "repair",
+      "cost": 1000,
+      "date": "2025-12-24"
     }
   ],
-  "next_id": 7
+  "next_id": 23
 }
